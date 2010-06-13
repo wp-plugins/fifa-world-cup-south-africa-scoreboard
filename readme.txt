@@ -4,13 +4,30 @@ Donate link: https://www.paypal.com/cl/cgi-bin/webscr?cmd=_flow&SESSION=2cOKD07f
 Tags: FIFA, World Cup, South Africa, FIFA 2010, football, soccer, Copa del Mundo 2010, Mundial de fútbol
 Requires at least: 2.8
 Tested up to: 2.9.2
-Stable tag: trunk
+Stable tag: 1.4
 
 == Description ==
 
-Get the latest results of 2010 FIFA World Cup South Africa™ in your Wordpress blog. Put a shortcode: wp_fifa_world_cup_scoreboard into a post or page and/or use the sidebar widget. Automatically updated after each match!
+Get the latest results of 2010 FIFA World Cup South Africa™ on a dedicated post/page or into the sidebar.
 
-**CAVEAT:** This plugin has a scraper included that fetch data from the [FIFA official website](http://www.fifa.com/worldcup/matches/index.html "2010 FIFA World Cup South Africa™"). All outbound links go to their website.
+<pre>
+Group A         Group B         Group C         Group D
+South Africa    Argentina       England         Germany
+Mexico          Nigeria         United States   Australia
+Uruguay         Korea Republic  Algeria         Serbia
+France          Greece          Slovenia        Ghana
+
+Group E         Group F         Group G         Group H
+Netherlands     Italy           Brazil          Spain
+Denmark         Paraguay        Korea DPR       Switzerland
+Japan           New Zealand     Côte d'Ivoire   Honduras
+Cameroon        Slovakia        Portugal        Chile
+</pre>
+
+**WARNING:** This plugin has a scraper included that fetch data from the [FIFA official website](http://www.fifa.com/worldcup/matches/index.html "2010 FIFA World Cup South Africa™"). All outbound links go to their website.
+
+1. The scraper is deployed only if necessary (when someone visits a page or post with the shortcode [wp_fifa_world_cup_scoreboard] included or the sidebar's widget is executed).
+2. When this happens, the plugin checks the last time of scraping. If there is new match unparsed will be deployed, otherwise uses data from an internal cache.
 
 **What's new**
 
@@ -19,15 +36,13 @@ Get the latest results of 2010 FIFA World Cup South Africa™ in your Wordpress 
 
 **Other features**
 
-1. The scraper is deployed only if necessary (when someone visits a page or post with the shortcode [wp_fifa_world_cup_scoreboard] included or the sidebar's widget is executed).
-2. When this happens, the plugin checks the last time of scraping. If there is new match unparsed will be deployed, otherwise uses data from an internal cache.
-3. Code should be updated frequently... As long as my team keep winning. LOL. Please at least, check for updates, before the second fase of the World Cup.
+* Code should be updated frequently... As long as my team keep winning. LOL. Please at least, check for updates, before the second fase of the World Cup.
 
 == Installation ==
 
 1. You need to load/activate the curl extension. If you do't know what this means, just go on. Most servers have curl installed!
 1. Download the plugin and extract its contents.
-1. Upload the `wp-fifa-world-cup-scoreboard` folder to the `/wp-content/plugins/` directory.
+1. Upload the `fifa-world-cup-scoreboard` folder to the `/wp-content/plugins/` directory.
 1. Activate **FIFA World Cup South Africa scoreboard** plugin through the 'Plugins' menu in WordPress.
 1. In your admin console, go to Appeareance > Widgets, drag the FIFA World Cup South Africa Scoreboard widget to wherever you want it to be, configure it and click on Save.
 1. More options in Settings > FIFA World Cup South Africa Scoreboard.
@@ -38,7 +53,7 @@ That's it!
 
 = Problems fetching data? Easy... = 
 
-* This would be very rare, but if the scraper seems to fail, check following permissions in folder wp-fifa-world-cup-scoreboard/
+* This would be very rare, but if the scraper seems to fail, check following permissions in folder fifa-world-cup-scoreboard/
 * chmod 757 php/tmp && chmod 646 php/tmp/cookies.txt (mandatory)
 * chmod 757 log && chmod 646 log.txt (optional for logging)
 
@@ -84,6 +99,9 @@ if (function_exists('nomikos_fifa_world_cup_scoreboard_widget_manual'))
 4. Options panel.
 
 == Changelog ==
+
+= 1.4 =
+* Directory problem fixed.
 
 = 1.3 =
 * General improvements.
