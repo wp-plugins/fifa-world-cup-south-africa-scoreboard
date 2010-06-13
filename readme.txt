@@ -8,21 +8,7 @@ Stable tag: trunk
 
 == Description ==
 
-Get the latest results of 2010 FIFA World Cup South Africa™ on a dedicated post/page or into the sidebar.
-
-<pre>
-Group A         Group B         Group C         Group D
-South Africa    Argentina       England         Germany
-Mexico          Nigeria         United States   Australia
-Uruguay         Korea Republic  Algeria         Serbia
-France          Greece          Slovenia        Ghana
-
-Group E         Group F         Group G         Group H
-Netherlands     Italy           Brazil          Spain
-Denmark         Paraguay        Korea DPR       Switzerland
-Japan           New Zealand     Côte d'Ivoire   Honduras
-Cameroon        Slovakia        Portugal        Chile
-</pre>
+Get the latest results of 2010 FIFA World Cup South Africa™ in your Wordpress blog. Put a shortcode: wp_fifa_world_cup_scoreboard into a post or page and/or use the sidebar widget. Automatically updated after each match!
 
 **WARNING:** This plugin has a scraper included that fetch data from the [FIFA official website](http://www.fifa.com/worldcup/matches/index.html "2010 FIFA World Cup South Africa™"). All outbound links go to their website.
 
