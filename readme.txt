@@ -44,7 +44,7 @@ Cameroon        Slovakia        Portugal        Chile
 1. Download the plugin and extract its contents.
 1. Upload the `wp-fifa-world-cup-scoreboard` folder to the `/wp-content/plugins/` directory.
 1. Activate **FIFA World Cup South Africa scoreboard** plugin through the 'Plugins' menu in WordPress.
-1. In your admin console, go to Appeareance > Widgets, drag the Wordpress Popular Posts widget to wherever you want it to be, configure it and click on Save.
+1. In your admin console, go to Appeareance > Widgets, drag the FIFA World Cup South Africa Scoreboard widget to wherever you want it to be, configure it and click on Save.
 1. More options in Settings > FIFA World Cup South Africa Scoreboard.
 1. (optional) Use [wp_fifa_world_cup_scoreboard] into a post or a page.
 1. Any malfunction please drop me a line in http://nomikos.info/2010/06/10/fifa-world-cup-south-africa-scoreboard-wp-plugin.html
