@@ -9,8 +9,8 @@ Author: NomikOS
 Author URI: http://www.rentacoder.com/RentACoder/DotNet/SoftwareCoders/ShowBioInfo.aspx?lngAuthorId=7064234
 */
 
-define( 'NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_DIR', WP_PLUGIN_DIR . '/wp-fifa-world-cup-scoreboard' );
-define( 'NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL', plugins_url( $path = '/wp-fifa-world-cup-scoreboard' ) );
+define( 'NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_DIR', WP_PLUGIN_DIR . '/fifa-world-cup-scoreboard' );
+define( 'NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL', plugins_url( $path = '/fifa-world-cup-scoreboard' ) );
 
 class nomikos_fifa_world_cup_scoreboard_class
 {
