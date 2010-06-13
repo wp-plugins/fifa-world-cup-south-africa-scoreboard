@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cl/cgi-bin/webscr?cmd=_flow&SESSION=2cOKD07f
 Tags: FIFA, World Cup, South Africa, FIFA 2010, football, soccer, Copa del Mundo 2010, Mundial de fútbol
 Requires at least: 2.8
 Tested up to: 2.9.2
-Stable tag: trunk
+Stable tag: 1.4
 
 == Description ==
 
@@ -99,6 +99,9 @@ if (function_exists('nomikos_fifa_world_cup_scoreboard_widget_manual'))
 4. Options panel.
 
 == Changelog ==
+
+= 1.4 =
+* Directory problem fixed.
 
 = 1.3 =
 * General improvements.
