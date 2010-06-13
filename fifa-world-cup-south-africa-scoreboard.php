@@ -4,7 +4,7 @@
 Plugin Name: FIFA World Cup South Africa scoreboard.
 Description: Get the latest results of 2010 FIFA World Cup South Africa™. Use [wp_fifa_world_cup_scoreboard] into a post or a page and/or use the sidebar widget.
 Plugin URI: http://nomikos.info/2010/06/10/fifa-world-cup-south-africa-scoreboard-wp-plugin.html
-Version: 1.3
+Version: 1.5
 Author: NomikOS
 Author URI: http://www.rentacoder.com/RentACoder/DotNet/SoftwareCoders/ShowBioInfo.aspx?lngAuthorId=7064234
 */
