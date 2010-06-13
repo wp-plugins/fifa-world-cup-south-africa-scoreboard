@@ -10,10 +10,7 @@ Stable tag: trunk
 
 Get the latest results of 2010 FIFA World Cup South Africa™ in your Wordpress blog. Put a shortcode: wp_fifa_world_cup_scoreboard into a post or page and/or use the sidebar widget. Automatically updated after each match!
 
-**WARNING:** This plugin has a scraper included that fetch data from the [FIFA official website](http://www.fifa.com/worldcup/matches/index.html "2010 FIFA World Cup South Africa™"). All outbound links go to their website.
-
-1. The scraper is deployed only if necessary (when someone visits a page or post with the shortcode [wp_fifa_world_cup_scoreboard] included or the sidebar's widget is executed).
-2. When this happens, the plugin checks the last time of scraping. If there is new match unparsed will be deployed, otherwise uses data from an internal cache.
+**CAVEAT:** This plugin has a scraper included that fetch data from the [FIFA official website](http://www.fifa.com/worldcup/matches/index.html "2010 FIFA World Cup South Africa™"). All outbound links go to their website.
 
 **What's new**
 
@@ -22,7 +19,9 @@ Get the latest results of 2010 FIFA World Cup South Africa™ in your Wordpress 
 
 **Other features**
 
-* Code should be updated frequently... As long as my team keep winning. LOL. Please at least, check for updates, before the second fase of the World Cup.
+1. The scraper is deployed only if necessary (when someone visits a page or post with the shortcode [wp_fifa_world_cup_scoreboard] included or the sidebar's widget is executed).
+2. When this happens, the plugin checks the last time of scraping. If there is new match unparsed will be deployed, otherwise uses data from an internal cache.
+3. Code should be updated frequently... As long as my team keep winning. LOL. Please at least, check for updates, before the second fase of the World Cup.
 
 == Installation ==
 
