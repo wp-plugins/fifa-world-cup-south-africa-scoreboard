@@ -57,7 +57,11 @@ if (preg_match_all("/<table[^>]*>(.*?)<\/table>/si", $unit, $groups, PREG_SET_OR
                     if (preg_match("/\d+:\d+/si", $result_text))
                     {
                         $match_scraped[$match_number]['scraped'] = 1;
-                        $last_scrape_match_number = $match_number;
+                        # FIFA website bug
+                        if ( 8 == $match_number )
+                            $last_scrape_match_number = 7;
+                        else
+                            $last_scrape_match_number = $match_number;
                     }
 
                     # set this data only once
