@@ -27,7 +27,7 @@ Get the latest results of 2010 FIFA World Cup South Africa™ in your Wordpress 
 
 1. You need to load/activate the curl extension. If you do't know what this means, just go on. Most servers have curl installed!
 1. Download the plugin and extract its contents.
-1. Upload the `fifa-world-cup-scoreboard` folder to the `/wp-content/plugins/` directory.
+1. Upload the `fifa-world-cup-south-africa-scoreboard` folder to the `/wp-content/plugins/` directory.
 1. Activate **FIFA World Cup South Africa scoreboard** plugin through the 'Plugins' menu in WordPress.
 1. In your admin console, go to Appeareance > Widgets, drag the FIFA World Cup South Africa Scoreboard widget to wherever you want it to be, configure it and click on Save.
 1. More options in Settings > FIFA World Cup South Africa Scoreboard.
@@ -38,9 +38,10 @@ That's it!
 
 = Problems fetching data? Easy... = 
 
-* This would be very rare, but if the scraper seems to fail, check following permissions in folder fifa-world-cup-scoreboard/
-* chmod 757 php/tmp && chmod 646 php/tmp/cookies.txt (mandatory)
-* chmod 757 log && chmod 646 log.txt (optional for logging)
+* This would be very rare, but if the scraper seems to fail, check following permissions in folder fifa-world-cup-south-africa-scoreboard/
+* Verifies that you have curl installed (mandatory).
+* chmod 757 php/tmp && chmod 646 php/tmp/cookies.txt (mandatory).
+* chmod 757 log && chmod 646 log.txt (optional for logging).
 
 = Template Tags =
 
@@ -78,7 +79,7 @@ if (function_exists('nomikos_fifa_world_cup_scoreboard_widget_manual'))
 
 == Screenshots ==
 
-1. Page && Widget view.
+1. Page and Widget view.
 2. Widgets Control Panel.
 3. Static bar on top. 
 4. Options panel.
@@ -120,4 +121,4 @@ if (function_exists('nomikos_fifa_world_cup_scoreboard_widget_manual'))
 * Add last news feeds.
 * Maybe some images/videos into a jquery-generated tooltip. (Too much?)
 * Any idea?
-* Work for mony!!!
+* Work for money!!!

@@ -20,17 +20,17 @@ class nomikos_fifa_world_cup_scoreboard_class
         $this->current_time_in_africa       = time() + 2 * 3600;
         $this->current_time_in_africa_mysql = date ('Y-m-d H:i:s', $this->current_time_in_africa);
         $this->results                      = array();
-        $this->alert_live_flag              = 0;
+        $this->alert_live_flag				= 0;
     }
 
     # initialited only from shortcode or widget
     # -----------------------------------------
     function init()
     {
-        static $ready_here = 0;
+		static $ready_here = 0;
 
-        if ($ready_here)
-            return;
+		if ($ready_here)
+			return;
 
         $this->options = get_option('nomikos_fifa_world_cup_scoreboard_options');
 
@@ -54,8 +54,8 @@ class nomikos_fifa_world_cup_scoreboard_class
         {
             foreach ($this->options->match_scraped as $PARTY_NUMBER => $PARTY_DATA)
             {
-                $PARTY_TIME_START = $PARTY_DATA['date'];
-                $PARTY_SCRAPED    = $PARTY_DATA['scraped'];
+				$PARTY_TIME_START = $PARTY_DATA['date'];
+				$PARTY_SCRAPED	  = $PARTY_DATA['scraped'];
 
                 if ( $PARTY_TIME_START < $this->current_time_in_africa
                 && ! $PARTY_SCRAPED )
@@ -78,34 +78,34 @@ class nomikos_fifa_world_cup_scoreboard_class
             # ------------
             include (NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_DIR . '/php/scrape.php');
 
-            $this->options->results                  = $results;
-            $this->options->last_scrape_match_number = $last_scrape_match_number;
+            $this->options->results				     = $results;
+			$this->options->last_scrape_match_number = $last_scrape_match_number;
 
             sort($match_scraped);
-            $this->options->match_scraped            = $match_scraped;
-            $this->options->last_scrape_date         = $this->current_time_in_africa;
+			$this->options->match_scraped			 = $match_scraped;
+			$this->options->last_scrape_date 		 = $this->current_time_in_africa;
 
-            # set this data only once
-            # -----------------------
-            if ( ! $this->options->match_times)
-            {
-                sort($match_times);
-                sort($match_times_mysql);
+			# set this data only once
+			# -----------------------
+			if ( ! $this->options->match_times)
+			{
+	            sort($match_times);
+	            sort($match_times_mysql);
 
-                $this->options->match_times       = $match_times;
-                $this->options->match_times_mysql = $match_times_mysql;
-            }
+	            $this->options->match_times       = $match_times;
+	            $this->options->match_times_mysql = $match_times_mysql;
+			}
 
             update_option('nomikos_fifa_world_cup_scoreboard_options', $this->options);
-        }
+		}
 
-        $ready_here = 1;
+		$ready_here = 1;
     }
 
     function staticbar()
     {
-        global $nomikos_fifa_world_cup_scoreboard_class;
-        include (NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_DIR . '/templates/staticbar.tpl');
+		global $nomikos_fifa_world_cup_scoreboard_class;
+		include (NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_DIR . '/templates/staticbar.tpl');
     }
 
     function draw_page()
@@ -130,8 +130,8 @@ class nomikos_fifa_world_cup_scoreboard_class
     {
         $debug = strstr($_SERVER['SERVER_ADMIN'], '@nomikos.info') ? 1 : 0;
 
-        $c       = date('c', time());
-        $bt      = debug_backtrace();
+        $c		 = date('c', time());
+        $bt 	 = debug_backtrace();
 
         $output  = "[log $c\n";
         $output .= 'file : ' . $bt[0]['file'] . "\n";
@@ -154,13 +154,13 @@ class nomikos_fifa_world_cup_scoreboard_class
     # ---------------------------
     function install()
     {
-        $this->options = null;
-        $this->options->options->text1       = 1;
-        $this->options->options->text2       = 1;
-        $this->options->options->text3       = 1;
+		$this->options = null;
+		$this->options->options->text1 		 = 1;
+		$this->options->options->text2 		 = 1;
+		$this->options->options->text3 		 = 1;
         $this->options->show_results->number = 0;
-        $this->options->show_results->date   = 0;
-        update_option('nomikos_fifa_world_cup_scoreboard_options', $this->options);
+        $this->options->show_results->date 	 = 0;
+		update_option('nomikos_fifa_world_cup_scoreboard_options', $this->options);
     }
 
     function uninstall()
@@ -168,14 +168,14 @@ class nomikos_fifa_world_cup_scoreboard_class
         delete_option('nomikos_fifa_world_cup_scoreboard_options');
     }
 
-    function init_session()
-    {
-        if ( ! session_id())
-            session_start();
-    
-        # fix jquery.cookie bug (temporarily)
-        unset($_COOKIE['staticBarClose']);
-    }
+	function init_session()
+	{
+		if ( ! session_id())
+			session_start();
+	
+		# fix jquery.cookie bug (temporarily)
+		unset($_COOKIE['staticBarClose']);
+	}
 
     # admin panel options
     # -------------------
@@ -190,20 +190,20 @@ class nomikos_fifa_world_cup_scoreboard_class
 
         if ($_POST['NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_SUBMIT'])
         {
-            $this->options->options->text1 = $_POST['text1'] ? 1 : 0;
-            $this->options->options->text2 = $_POST['text2'] ? 1 : 0;
-            $this->options->options->text3 = $_POST['text3'] ? 1 : 0;
+	        $this->options->options->text1 = $_POST['text1'] ? 1 : 0;
+	        $this->options->options->text2 = $_POST['text2'] ? 1 : 0;
+	        $this->options->options->text3 = $_POST['text3'] ? 1 : 0;
 
-            $this->options->show_results->number = $_POST['number'] ? 1 : 0;
-            $this->options->show_results->date   = $_POST['date'] ? 1 : 0;
+	        $this->options->show_results->number = $_POST['number'] ? 1 : 0;
+	        $this->options->show_results->date   = $_POST['date'] ? 1 : 0;
 
-            update_option('nomikos_fifa_world_cup_scoreboard_options', $this->options);
+	        update_option('nomikos_fifa_world_cup_scoreboard_options', $this->options);
 
-            ?>
-            <div class="updated"><p>
-            Update <b>successful</b>.
-            </p></div>
-            <?php
+			?>
+			<div class="updated"><p>
+			Update <b>successful</b>.
+			</p></div>
+			<?php
         }
     ?>
     <div class="wrap">
@@ -211,25 +211,25 @@ class nomikos_fifa_world_cup_scoreboard_class
     <h2>FIFA World Cup South Africa scoreboard</h2>
     <form name="form1" method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
     <input type="hidden" name="NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_SUBMIT" value="1">
-    <p><b>Results in page/post</b>:<i></p>
-    <p></p>
-    <label>
-    <input name="number" class="checkbox" type="checkbox" <?php echo $this->options->show_results->number ? 'checked' : '' ?>/> Show match number (first column)</label><br />
-    <p></p>
-    <label>
-    <input name="date" class="checkbox" type="checkbox" <?php echo $this->options->show_results->date ? 'checked' : '' ?>/> Show match date (second column)</label><br />
-    <p><b>Top bar</b>:<i></p>
-    <p></p>
-    <label>
-    <input name="text1" class="checkbox" type="checkbox" <?php echo $this->options->options->text1 ? 'checked' : '' ?>/> Show "FIFA World Cup South Africa Scoreboard"</label><br />
-    <p></p>
-    <label>
-    <input name="text2" class="checkbox" type="checkbox" <?php echo $this->options->options->text2 ? 'checked' : '' ?>/> Show "go to FIFA World Cup™ official website"</label><br />
-    <p></p>
-    <label>
-    <input name="text3" class="checkbox" type="checkbox" <?php echo $this->options->options->text3 ? 'checked' : '' ?>/> Show "&copy;"
-    <?php echo $this->options->options->text3 ? $_POST ? '( :) good thinking... o/\o high five! )' : '( ..;V{^^}_b that\'s cool partner! )' : '( :Þ )' ?>
-    </label>
+	<p><b>Results in page/post</b>:<i></p>
+	<p></p>
+	<label>
+	<input name="number" class="checkbox" type="checkbox" <?php echo $this->options->show_results->number ? 'checked' : '' ?>/> Show match number (first column)</label><br />
+	<p></p>
+	<label>
+	<input name="date" class="checkbox" type="checkbox" <?php echo $this->options->show_results->date ? 'checked' : '' ?>/> Show match date (second column)</label><br />
+	<p><b>Top bar</b>:<i></p>
+	<p></p>
+	<label>
+	<input name="text1" class="checkbox" type="checkbox" <?php echo $this->options->options->text1 ? 'checked' : '' ?>/> Show "FIFA World Cup South Africa Scoreboard"</label><br />
+	<p></p>
+	<label>
+	<input name="text2" class="checkbox" type="checkbox" <?php echo $this->options->options->text2 ? 'checked' : '' ?>/> Show "go to FIFA World Cup™ official website"</label><br />
+	<p></p>
+	<label>
+	<input name="text3" class="checkbox" type="checkbox" <?php echo $this->options->options->text3 ? 'checked' : '' ?>/> Show "&copy;"
+	<?php echo $this->options->options->text3 ? $_POST ? '( :) good thinking... o/\o high five! )' : '( ..;V{^^}_b that\'s cool partner! )' : '( :Þ )' ?>
+	</label>
     <p class="submit">
     <input type="submit" name="Submit" value="Update Options" />
     </p>
@@ -380,7 +380,7 @@ if ($nomikos_fifa_world_cup_scoreboard_class)
     register_activation_hook(__file__, array($nomikos_fifa_world_cup_scoreboard_class, 'install'));
     register_deactivation_hook(__file__, array($nomikos_fifa_world_cup_scoreboard_class, 'uninstall'));
 
-    register_deactivation_hook('init', array($nomikos_fifa_world_cup_scoreboard_class, 'init_session'));
+	add_action('init', array($nomikos_fifa_world_cup_scoreboard_class, 'init_session'));
 
     add_action('wp_footer', array($nomikos_fifa_world_cup_scoreboard_class, 'staticbar'));
     add_action('admin_menu', array($nomikos_fifa_world_cup_scoreboard_class, 'admin_options'));
