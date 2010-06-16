@@ -50,9 +50,7 @@ if (preg_match_all("/<table[^>]*>(.*?)<\/table>/si", $unit, $groups, PREG_SET_OR
                     $results['group'][$i][$j]['team2_text']  = strip_tags(trim($records[12]));
                     $results['group'][$i][$j]['team2_flag']  = strip_tags(trim($records[13]));
 
-if (stristr ($results['group'][$i][$j]['team1_text'], 'german'))
-{d($records, 1);}
-
+                    //if (stristr ($results['group'][$i][$j]['team1_text'], 'german')) {d($records, 1);}
 
                     }
                     else if ($preg2)
@@ -118,10 +116,8 @@ if (stristr ($results['group'][$i][$j]['team1_text'], 'german'))
                         }
                     }
 
-
-
-//d($results['group'][$i][$j], 0);
-//                    continue 3;
+                    //d($results['group'][$i][$j], 0);
+                    //                    continue 3;
                 }
             }
         }
