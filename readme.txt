@@ -86,6 +86,9 @@ if (function_exists('nomikos_fifa_world_cup_scoreboard_widget_manual'))
 
 == Changelog ==
 
+= 1.6 =
+* Scraper partial fixed. Next version will be complete.
+
 = 1.5.5 =
 * Scraper partial fixes. Next version will be complete.
 
