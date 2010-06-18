@@ -41,8 +41,7 @@ foreach ( $nomikos_fifa_world_cup_scoreboard_class->options->results as $i => $g
     foreach ( $group as $j => $matchs )
     {
         $gletter = chr($j + 97);
-        if ( ! $instance[$gletter] )
-            continue;
+        // if ( ! $instance[$gletter] )            continue;
 
         echo '<table class="nomikos_fifa_world_cup_scoreboard_class_table" id="group'.strtoupper($gletter).'" style="display:none;"><caption>Group '.strtoupper($gletter).'</caption>';
 
