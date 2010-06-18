@@ -75,21 +75,5 @@ class cURL
         curl_close($process);
         return $return;
     }
-    
-    function get_unit($string, $start, $end)
-    {
-        if (($pos = stripos($string, $start)) === false)
-            return '';
-    
-        $str = substr($string, $pos);
-        $str_two = substr($str, strlen($start));
-    
-    
-        if (($second_pos = stripos($str_two, $end)) === false)
-            return '';
-    
-        $str_three = substr($str_two, 0, $second_pos);
-        return trim($str_three);
-    }
 }
 ?>

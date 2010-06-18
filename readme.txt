@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cl/cgi-bin/webscr?cmd=_flow&SESSION=2cOKD07f
 Tags: FIFA, World Cup, South Africa, FIFA 2010, football, soccer, Copa del Mundo 2010, Mundial de fútbol
 Requires at least: 2.8
 Tested up to: 2.9.2
-Stable tag: 1.5.5
+Stable tag: 1.7
 
 == Description ==
 
@@ -86,6 +86,19 @@ if (function_exists('nomikos_fifa_world_cup_scoreboard_widget_manual'))
 
 == Changelog ==
 
+= 1.7 =
+* Scraper updated.
+* Function to switch to local time added to page && sidebar.
+* Sidebar widget now shows one group at a time.
+* Top bar shows "Last result", "Next macth" and "Now playing" (if there is a match in progress).
+* Fade effect added to top bar.
+* Top bar now fix better in 1024px wide screens.
+* Schedule image in sidebar added.
+* Top bar & sidebar schedule can be removed from Options panel.
+
+= 1.6 =
+* Scraper partial fixed. Next version will be complete.
+
 = 1.5.5 =
 * Scraper partial fixes. Next version will be complete.
 
@@ -120,7 +133,6 @@ if (function_exists('nomikos_fifa_world_cup_scoreboard_widget_manual'))
 
 == To do ==
 
-* Function to switch to local time.
 * Add last news feeds.
 * Maybe some images/videos into a jquery-generated tooltip. (Too much?)
 * Any idea?
