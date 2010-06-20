@@ -49,31 +49,77 @@ class cURL
         global $nomikos_fifa_world_cup_scoreboard_class;
     
         $url = str_replace('&amp;', '&', $url);
-        $process = @curl_init($url);
+        $process = curl_init($url);
     
-        @curl_setopt($process, CURLOPT_HTTPHEADER, $this->headers);
-        @curl_setopt($process, CURLOPT_HEADER, 0);
-        @curl_setopt($process, CURLOPT_USERAGENT, $this->user_agent);
-        @curl_setopt($process, CURLOPT_SSL_VERIFYHOST, 0);
-        @curl_setopt($process, CURLOPT_SSL_VERIFYPEER, false);
-        @curl_setopt($process, CURLOPT_VERBOSE, 1);
-        @curl_setopt($process, CURLOPT_COOKIEFILE, $this->cookie_file);
-        @curl_setopt($process, CURLOPT_COOKIEJAR, $this->cookie_file);
-        @curl_setopt($process, CURLOPT_ENCODING , $this->compression);
-        @curl_setopt($process, CURLOPT_TIMEOUT, 30);
-        @curl_setopt($process, CURLOPT_RETURNTRANSFER, 1);
-        @curl_setopt($process, CURLOPT_FOLLOWLOCATION, 1);
-        if ($this->proxy) @curl_setopt($cUrl, CURLOPT_PROXY, 'proxy_ip:proxy_port');
+        curl_setopt($process, CURLOPT_HTTPHEADER, $this->headers);
+        curl_setopt($process, CURLOPT_HEADER, 0);
+        curl_setopt($process, CURLOPT_USERAGENT, $this->user_agent);
+        curl_setopt($process, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($process, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($process, CURLOPT_VERBOSE, 1);
+        curl_setopt($process, CURLOPT_COOKIEFILE, $this->cookie_file);
+        curl_setopt($process, CURLOPT_COOKIEJAR, $this->cookie_file);
+        curl_setopt($process, CURLOPT_ENCODING , $this->compression);
+        curl_setopt($process, CURLOPT_TIMEOUT, 30);
+        curl_setopt($process, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($process, CURLOPT_FOLLOWLOCATION, 1);
+        if ($this->proxy) curl_setopt($cUrl, CURLOPT_PROXY, 'proxy_ip:proxy_port');
     
-        $return = @curl_exec($process);
+        $return = curl_exec($process);
     
         if($return === false)
         {
-            $nomikos_fifa_world_cup_scoreboard_class->error(@curl_error($process));
+            $nomikos_fifa_world_cup_scoreboard_class->error(curl_error($process));
         }
     
-        @curl_close($process);
+        curl_close($process);
         return $return;
+    }
+    
+    function post($url, $data)
+    {
+        global $nomikos_fifa_world_cup_scoreboard_class;
+    
+        $process = curl_init($url);
+    
+        curl_setopt($process, CURLOPT_HTTPHEADER, $this->headers);
+        curl_setopt($process, CURLOPT_HEADER, 1);
+        curl_setopt($process, CURLOPT_USERAGENT, $this->user_agent);
+        curl_setopt($process, CURLOPT_COOKIEFILE, $this->cookie_file);
+        curl_setopt($process, CURLOPT_COOKIEJAR, $this->cookie_file);
+        curl_setopt($process, CURLOPT_ENCODING , $this->compression);
+        curl_setopt($process, CURLOPT_TIMEOUT, 30);
+        curl_setopt($process, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($process, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($process, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($process, CURLOPT_POST, 1);
+        if ($this->proxy) curl_setopt($cUrl, CURLOPT_PROXY, 'proxy_ip:proxy_port');
+        
+        $return = curl_exec($process);
+    
+        if($return === false)
+        {
+            $nomikos_fifa_world_cup_scoreboard_class->error(curl_error($process));
+        }
+    
+        curl_close($process);
+        return $return;
+    }
+    
+    function get_unit($string, $start, $end)
+    {
+        if (($pos = stripos($string, $start)) === false)
+            return '';
+    
+        $str = substr($string, $pos);
+        $str_two = substr($str, strlen($start));
+    
+    
+        if (($second_pos = stripos($str_two, $end)) === false)
+            return '';
+    
+        $str_three = substr($str_two, 0, $second_pos);
+        return trim($str_three);
     }
 }
 ?>

@@ -1,38 +1,37 @@
 <?php
 
-$results = array();
-$page = '';
-
-if ( extension_loaded('curl'))
+if ( ! extension_loaded('curl'))
 {
-    include (NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_DIR . '/php/curl.php');
-    $cc = new cURL();
-
-    @set_time_limit(60);
-
-    $page = $cc->get($this->scrape_url);
-}
-
-if ( ! $page)
-if ( ! $page = file_get_contents($this->scrape_url))
-{
-    echo "WARNING: can't fetch (file_get_contents) scrape from: $this->scrape_url";
+    $this->error('You need to load/activate the curl extension');
     return false;
 }
+
+set_time_limit(60);
+
+include (NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_DIR . '/php/curl.php');
+$cc = new cURL();
 
 if ( ! file_exists($parser = NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_DIR . '/parser/parser.inc'))
 {
-    echo "WARNING: parser file missing $parser";
+    $this->error("WARNING: parser file missing $parser");
     return false;
 }
 
-$unit = $this->get_unit($page, ' id="bodyContent"', ' id="thirdRail"');
+if ( ! $page = $cc->get($this->scrape_url))
+{
+    $this->error("WARNING: can't fetch scrape from: $this->scrape_url");
+    return false;
+}
+
+$results = array();
+
+$unit = $cc->get_unit($page, ' id="bodyContent"', ' id="thirdRail"');
 
 include ($parser);
 
 if (empty($results['group']))
 {
-    echo 'WARNING: parser breaked or page not available';
+    $this->error('WARNING: parser breaked or page not available');
     return false;
 }
 
