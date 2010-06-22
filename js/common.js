@@ -17,22 +17,25 @@ $(document).ready(function() {
         });
     });
 
-    var tz = new Date();
-
     // in seconds
+    var tz = new Date();
     var tz = tz.getTimezoneOffset() * 60;
     var tz_dif_africa = 2 * 3600;
 
-    if ($.cookie("tzChangerLocal") != 0 && $.cookie("tzChangerLocal") != 1) {
-        $.cookie("tzChangerLocal", "1", {path: '/', expires: 0});
+    if ($.cookie("nomikos_fifa_world_cup_scoreboard_tzChangerLocal") == null) {
+        $.cookie("nomikos_fifa_world_cup_scoreboard_tzChangerLocal", "1", {path: '/', expires: 0});
     }
 
-    if ($.cookie("tzChangerLocal") == 1) {
+    if ($.cookie("nomikos_fifa_world_cup_scoreboard_staticBarClose") == null) {
+        $.cookie("nomikos_fifa_world_cup_scoreboard_staticBarClose", "0", {path: '/', expires: 0});
+    }
+    
+    if ($.cookie("nomikos_fifa_world_cup_scoreboard_tzChangerLocal") == 1) {
         settzChanger(true);
     }
 
     if (document.getElementById("staticBar2b"))
-    if ($.cookie("staticBarClose") == 1) {
+    if ($.cookie("nomikos_fifa_world_cup_scoreboard_staticBarClose") == 1) {
         $("#staticBar2b").attr('checked', false);
     }
     else {
@@ -47,15 +50,15 @@ $(document).ready(function() {
     {
         $(".tzChanger").attr('checked', checked);
         if (checked) {
-            $.cookie("tzChangerLocal", "1", {path: '/', expires: 0});
+            $.cookie("nomikos_fifa_world_cup_scoreboard_tzChangerLocal", "1", {path: '/', expires: 0});
         }
         else {
-            $.cookie("tzChangerLocal", "0", {path: '/', expires: 0});
+            $.cookie("nomikos_fifa_world_cup_scoreboard_tzChangerLocal", "0", {path: '/', expires: 0});
         }
         var tzt = $(".tzChangerText");
         $.each(tzt, function(i, item){
             var real_date = Number(item.id);
-            if ($.cookie("tzChangerLocal") == 1)
+            if ($.cookie("nomikos_fifa_world_cup_scoreboard_tzChangerLocal") == 1)
                 var new_date = real_date - tz + tz_dif_africa;
             else
                 var new_date = real_date + tz;
@@ -72,7 +75,7 @@ $(document).ready(function() {
         });
     }
 
-    if ( $.cookie("staticBarClose") == 0 ) {
+    if ( $.cookie("nomikos_fifa_world_cup_scoreboard_staticBarClose") == 0 ) {
         openstaticBarClose();
     }
 
@@ -97,7 +100,7 @@ $(document).ready(function() {
         var height2 = height2.replace(re, "");
         $("body").css("padding-top", Number(height1) - Number(height2) + 'px');
 
-        $.cookie("staticBarClose", "1", {path: '/', expires: 0});
+        $.cookie("nomikos_fifa_world_cup_scoreboard_staticBarClose", "1", {path: '/', expires: 0});
     }
 
     function openstaticBarClose() {
@@ -112,7 +115,7 @@ $(document).ready(function() {
         var height2 = height2.replace(re, "");
         $("body").css("padding-top", Number(height1) + Number(height2) + 'px');
 
-        $.cookie("staticBarClose", "0", {path: '/', expires: 0});
+        $.cookie("nomikos_fifa_world_cup_scoreboard_staticBarClose", "0", {path: '/', expires: 0});
 
         var counter = 0;
         var divs = $(".staticBar_table_div");
