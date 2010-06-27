@@ -1,6 +1,6 @@
 
 <?php if ( ! $nomikos_fifa_world_cup_scoreboard_class->options->options->topbar ) return; ?>
-<?php if ( ! $nomikos_fifa_world_cup_scoreboard_class->options->results ) return; ?>
+<?php if ( ! $nomikos_fifa_world_cup_scoreboard_class->options->results2 ) return; ?>
 
 <div id="staticBar">
 <table cellspacing="0" cellpadding="0" width="100%">
@@ -34,13 +34,12 @@ foreach ( $nomikos_fifa_world_cup_scoreboard_class->options->match_times as $m )
     }
 }
 
-foreach ( $nomikos_fifa_world_cup_scoreboard_class->options->results as $i => $group )
+foreach ( $nomikos_fifa_world_cup_scoreboard_class->options->results2 as $i => $group )
 {
-    foreach ( $group as $j => $matchs )
+    foreach ( $group as $istage => $matchs )
     {
         foreach ( $matchs as $records )
         {
-            $gletter = strtoupper(chr($j + 97));
             $result_text = $records['result_text'];
 
             $result_text = preg_replace("/<a[^>]*>\s*<img[^>]*matchcamera.png[^>]*>\s*<\/a>/si", '', $result_text);
@@ -57,7 +56,7 @@ foreach ( $nomikos_fifa_world_cup_scoreboard_class->options->results as $i => $g
 &nbsp;
 <a target="_blank" href="http://www.fifa.com{$records['team2_link']}">{$records['team2_text']}</a>&nbsp;<img width="19" height="13" src="$NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL/img/{$records['team2_flag']}.gif" title="{$records['team2_text']}" />
 &nbsp;
-Group $gletter - <a target="_blank" href="http://www.fifa.com{$records['venue_link']}">{$records['venue_text']}</a>
+$istage - <a target="_blank" href="http://www.fifa.com{$records['venue_link']}">{$records['venue_text']}</a>.
 </div>
 EOF;
             else if ( $nomikos_fifa_world_cup_scoreboard_class->options->last_scrape_match_timestamp == $records['timestamp'] )
@@ -71,11 +70,12 @@ Last result:
 &nbsp;
 <a target="_blank" href="http://www.fifa.com{$records['team2_link']}">{$records['team2_text']}</a>&nbsp;<img width="19" height="13" src="$NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL/img/{$records['team2_flag']}.gif" title="{$records['team2_text']}" />
 &nbsp;
-Group $gletter - <a target="_blank" href="http://www.fifa.com{$records['venue_link']}">{$records['venue_text']}</a>
+$istage - <a target="_blank" href="http://www.fifa.com{$records['venue_link']}">{$records['venue_text']}</a>.
 </div>
 EOF;
             else if ( $next_scrape_match_number == $records['timestamp'] )
-            $output .=  <<<EOF
+            {
+                $output .=  <<<EOF
 <div class="staticBar_table_div">
 Next match:
 &nbsp;
@@ -85,9 +85,10 @@ Next match:
 &nbsp;
 <a target="_blank" href="http://www.fifa.com{$records['team2_link']}">{$records['team2_text']}</a>&nbsp;<img width="19" height="13" src="$NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL/img/{$records['team2_flag']}.gif" title="{$records['team2_text']}" />
 &nbsp;
-Group $gletter - <a target="_blank" href="http://www.fifa.com{$records['venue_link']}">{$records['venue_text']}</a>
+$istage - <a target="_blank" href="http://www.fifa.com{$records['venue_link']}">{$records['venue_text']}</a>.
 </div>
 EOF;
+        }
         }
     }
 }

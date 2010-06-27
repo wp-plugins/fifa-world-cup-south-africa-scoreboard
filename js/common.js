@@ -29,7 +29,7 @@ $(document).ready(function() {
     if ($.cookie("nomikos_fifa_world_cup_scoreboard_staticBarClose") == null) {
         $.cookie("nomikos_fifa_world_cup_scoreboard_staticBarClose", "0", {path: '/', expires: 0});
     }
-    
+
     if ($.cookie("nomikos_fifa_world_cup_scoreboard_tzChangerLocal") == 1) {
         settzChanger(true);
     }
@@ -46,6 +46,18 @@ $(document).ready(function() {
         settzChanger(this.checked);
     });
 
+    var tzs = $(".tzShower");
+    $.each(tzs, function(i, item){
+        var real_date2 = Number(item.parentNode.parentNode.id);
+        var real_date2 = real_date2 - (tz - tz_dif_africa);
+        var real_date2 = new Date(real_date2 * 1000);
+        $(this).countdown({
+            until: real_date2,
+            labels1: ['Years', 'Months', 'Weeks', 'Days', 'Hours', 'Mins', 'Secs'],
+            labels: ['Years', 'Months', 'Weeks', 'Days', 'Hours', 'Mins', 'Secs'], 
+            });
+    });
+
     function settzChanger(checked)
     {
         $(".tzChanger").attr('checked', checked);
@@ -57,7 +69,7 @@ $(document).ready(function() {
         }
         var tzt = $(".tzChangerText");
         $.each(tzt, function(i, item){
-            var real_date = Number(item.id);
+            var real_date = Number(item.parentNode.parentNode.id);
             if ($.cookie("nomikos_fifa_world_cup_scoreboard_tzChangerLocal") == 1)
                 var new_date = real_date - tz + tz_dif_africa;
             else
@@ -136,22 +148,48 @@ $(document).ready(function() {
         location = location + '?nomikos_refresh=1'
     });
 
-    $("#groupA").show();
+    $(".group_stage2").show();
 
     $(".nomikos_fifa_world_cup_scoreboard_class_table_group").click(function() {
         var group = $(this).text();
-        if ( group.length != 1 )
-            return;
-        $("#groupA").hide();
-        $("#groupB").hide();
-        $("#groupC").hide();
-        $("#groupD").hide();
-        $("#groupE").hide();
-        $("#groupF").hide();
-        $("#groupG").hide();
-        $("#groupH").hide();
-        $("#group" + group).animate({
-            opacity: "show"
-        });
-    });
-});
+        if ( group == "A"
+        || group == "B"
+        || group == "C"
+        || group == "D"
+        || group == "E"
+        || group == "F"
+        || group == "G"
+        || group == "H" ) {
+            $("#groupA").hide();
+            $("#groupB").hide();
+            $("#groupC").hide();
+            $("#groupD").hide();
+            $("#groupE").hide();
+            $("#groupF").hide();
+            $("#groupG").hide();
+            $("#groupH").hide();
+            $(".group_stage2").hide();
+            $("#group" + group).animate({
+                opacity: "show"
+            });
+        }
+        else if ( group == "Stage 2" ) {
+            $("#groupA").hide();
+            $("#groupB").hide();
+            $("#groupC").hide();
+            $("#groupD").hide();
+            $("#groupE").hide();
+            $("#groupF").hide();
+            $("#groupG").hide();
+            $("#groupH").hide();
+            $(".group_stage2").animate({
+                opacity: "show"
+            })
+        }
+    })
+
+    $(".nomikos_fifa_world_cup_scoreboard_class_table_group_page").click(function() {
+        var group = $(this).text();
+        location = '#_group' + group;
+    })    
+})
