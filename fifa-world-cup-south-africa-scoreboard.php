@@ -139,7 +139,7 @@ class nomikos_fifa_world_cup_scoreboard_class
     {
         wp_enqueue_script('jquery');
         wp_enqueue_script('nomikos_fifa_world_cup_scoreboard_js_cookie', NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL.'/js/jquery.cookie.js', array('jquery'));
-        wp_enqueue_script('nomikos_fifa_world_cup_scoreboard_js_countdown', NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL.'/js/jquery.countdown.pack.js', array('jquery'));
+        wp_enqueue_script('nomikos_fifa_world_cup_scoreboard_js_countdown', NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL.'/js/jquery.countdown.js', array('jquery'));
         wp_enqueue_script('nomikos_fifa_world_cup_scoreboard_js_common', NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL.'/js/common.js', array('jquery'));
     }
 
