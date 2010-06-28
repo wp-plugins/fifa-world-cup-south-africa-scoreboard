@@ -35,7 +35,7 @@ foreach ( $this->options->results1 as $i => $group )
     {
         $gletter = chr($j + 97);
 
-        echo '<a name="_group'.strtoupper($gletter).'"><br/ ><br/ >';
+        echo '<a name="_group'.strtoupper($gletter).'"></a><br /><br />';
         echo '<table class="nomikos_fifa_world_cup_scoreboard_class_table"><caption>Group '.strtoupper($gletter).'</caption>';
         echo '<tr>';
 
@@ -76,7 +76,7 @@ foreach ( $this->options->results2 as $i => $group )
 {
     foreach ( $group as $istage => $matchs )
     {
-        echo '<a name="_group'.$istage.'"><br/ ><br/ >';
+        echo '<a name="_group'.$istage.'"></a><br /><br />';
         echo '<table class="nomikos_fifa_world_cup_scoreboard_class_table"><caption>'.$istage.'</caption>';
         echo '<tr>';
 
