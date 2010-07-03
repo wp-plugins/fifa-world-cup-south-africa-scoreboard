@@ -3,7 +3,7 @@ Contributors: Nomikos
 Donate link: https://www.paypal.com/cl/cgi-bin/webscr?cmd=_flow&SESSION=2cOKD07f2uX8_d16CO3H8aY1aypcNYD3MjXQYvACoYwuGHuHXWMyzYI1JAK&dispatch=5885d80a13c0db1f22d2300ef60a6759516e590e949da361fd1b680561e9552a
 Tags: FIFA, World Cup, South Africa, FIFA 2010, football, soccer, Copa del Mundo 2010, Mundial de fútbol
 Requires at least: 2.8
-Tested up to: 2.9.2
+Tested up to: 3.0
 Stable tag: 2.1
 
 == Description ==
