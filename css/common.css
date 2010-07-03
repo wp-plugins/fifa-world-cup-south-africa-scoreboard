@@ -1,7 +1,6 @@
 #content .nomikos_fifa_world_cup_scoreboard_class_table {
 width: 100%;
 border: 1px solid #eee;
-margin: 10px 0 10px 0;
 }
 #content .nomikos_fifa_world_cup_scoreboard_class_table caption {
 background-color:#eee;
@@ -30,6 +29,18 @@ font-family:verdana;
 font-style:normal;
 font-size:11px;
 width:20%;
+}
+
+.nomikos_fifa_world_cup_scoreboard_class_table_group_page {
+cursor:pointer;
+background-color: white;
+background-image: url('./topbar.png');
+background-repeat: repeat-x;
+border:1px outset gray;
+color: black;
+font-family:verdana;
+font-style:normal;
+font-size:11px;
 }
 
 #sidebar .nomikos_fifa_world_cup_scoreboard_class_table {

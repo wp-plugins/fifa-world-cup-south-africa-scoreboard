@@ -4,7 +4,7 @@
 Plugin Name: FIFA World Cup South Africa scoreboard.
 Description: Get the latest results of 2010 FIFA World Cup South Africa™. Use [wp_fifa_world_cup_scoreboard] into a post or a page and/or use the sidebar widget.
 Plugin URI: http://nomikos.info/2010/06/10/fifa-world-cup-south-africa-scoreboard-wp-plugin.html
-Version: 1.7.2
+Version: 2.1
 Author: NomikOS
 Author URI: http://www.rentacoder.com/RentACoder/DotNet/SoftwareCoders/ShowBioInfo.aspx?lngAuthorId=7064234
 */
@@ -16,7 +16,8 @@ class nomikos_fifa_world_cup_scoreboard_class
 {
     function nomikos_fifa_world_cup_scoreboard_class()
     {
-        $this->scrape_url                   = 'http://www.fifa.com/worldcup/matches/index.html';
+        $this->scrape_url[1]                = 'http://www.fifa.com/worldcup/matches/groupstage.html';
+        $this->scrape_url[2]                = 'http://www.fifa.com/worldcup/matches/index.html';
         $this->current_time_in_africa       = time() + 2 * 3600;
         $this->current_time_in_africa_mysql = date ('Y-m-d H:i:s', $this->current_time_in_africa);
         $this->results                      = array();
@@ -57,7 +58,7 @@ class nomikos_fifa_world_cup_scoreboard_class
                 $PARTY_TIME_START = $PARTY_DATA['date'];
                 $PARTY_SCRAPED    = $PARTY_DATA['scraped'];
 
-                if ( $PARTY_TIME_START < $this->current_time_in_africa
+                if ( $PARTY_TIME_START + 2 * 3600 < $this->current_time_in_africa
                 && ! $PARTY_SCRAPED )
                 {
                     $LETS_SCRAPE = 1;
@@ -78,9 +79,10 @@ class nomikos_fifa_world_cup_scoreboard_class
             # ------------
             include (NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_DIR . '/php/scrape.php');
 
-            if ($results)
+            if ($results1 || $results2)
             {
-                $this->options->results                     = $results;
+                $this->options->results1                    = $results1;
+                $this->options->results2                    = $results2;
                 $this->options->last_scrape_match_timestamp = $last_scrape_match_timestamp;
 
                 sort($match_scraped);
@@ -137,11 +139,13 @@ class nomikos_fifa_world_cup_scoreboard_class
     {
         wp_enqueue_script('jquery');
         wp_enqueue_script('nomikos_fifa_world_cup_scoreboard_js_cookie', NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL.'/js/jquery.cookie.js', array('jquery'));
+        wp_enqueue_script('nomikos_fifa_world_cup_scoreboard_js_countdown', NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL.'/js/jquery.countdown.js', array('jquery'));
         wp_enqueue_script('nomikos_fifa_world_cup_scoreboard_js_common', NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL.'/js/common.js', array('jquery'));
     }
 
     function header_styles()
     {
+        wp_enqueue_style('nomikos_fifa_world_cup_scoreboard_css_countdown', NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL.'/css/jquery.countdown.css');
         wp_enqueue_style('nomikos_fifa_world_cup_scoreboard_css_common', NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL.'/css/common.css');
     }
 
@@ -178,8 +182,8 @@ class nomikos_fifa_world_cup_scoreboard_class
         $this->options->options->text1       = 1;
         $this->options->options->text2       = 1;
         $this->options->options->text3       = 1;
-        $this->options->show_results->number = 0;
-        $this->options->show_results->date   = 0;
+        $this->options->show_results->number = 1;
+        $this->options->show_results->date   = 1;
         update_option('nomikos_fifa_world_cup_scoreboard_options', $this->options);
     }
 
