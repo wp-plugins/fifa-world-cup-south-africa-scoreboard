@@ -58,7 +58,9 @@ foreach ( $nomikos_fifa_world_cup_scoreboard_class->options->results1 as $i => $
             }
 
             $result_text = $records['result_text'];
-            $result_text = preg_replace("/(<a[^>]*>\s*<img[^>]*matchmore.png[^>]*>\s*<\/a>)/si", "<br />\\1", $result_text);
+
+            $result_text = preg_replace("/<a[^>]*>\s*<img[^>]*matchcamera.png[^>]*>\s*<\/a>/si", '', $result_text);
+            $result_text = preg_replace("/<a[^>]*>\s*<img[^>]*matchmore.png[^>]*>\s*<\/a>/si", '', $result_text);
 
             if ( $instance['one_row'] )
 echo <<<EOF

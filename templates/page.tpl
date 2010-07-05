@@ -52,6 +52,9 @@ foreach ( $this->options->results1 as $i => $group )
             $have_coutries_links[$records['team1_flag']] = $records['team1_link'];
             $have_coutries_links[$records['team2_flag']] = $records['team2_link'];
 
+            $result_text = $records['result_text'];
+            $result_text = str_replace('http://localhost/agenda/wp-content/plugins/fifa-world-cup-south-africa-scoreboard', $NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL, $result_text);
+
             echo "<tr id=\"{$records['timestamp']}\">";
             if ($this->options->show_results->number)
                 echo "<td align=\"right\">{$records['number']}</td>";
@@ -61,7 +64,7 @@ echo <<<EOF
 <td><a target="_blank" href="http://www.fifa.com{$records['venue_link']}">{$records['venue_text']}</a></td>
 <td align="right"><img width="19" height="13" src="$NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL/img/{$records['team1_flag']}.gif" /></td>
 <td><a target="_blank" href="http://www.fifa.com{$records['team1_link']}">{$records['team1_text']}</a></td>
-<td align="center">{$records['result_text']}</td>
+<td align="center">{$result_text}</td>
 <td align="right"><a target="_blank" href="http://www.fifa.com{$records['team2_link']}">{$records['team2_text']}</a></td>
 <td><img width="19" height="13" src="$NOMIKOS_FIFA_WORLD_CUP_SCOREBOARD_PLUGIN_URL/img/{$records['team2_flag']}.gif" /></td>
 </tr>
